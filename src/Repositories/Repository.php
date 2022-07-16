@@ -27,10 +27,14 @@ class Repository
 		$this->databaseName = 'tmmdncx1erpi8twe';
 		$this->databasePassword = 'i5vw5b2po4anfbpe';
 
-		$this->mysqlConnection = new mysqli($this->hostname, $this->username, $this->databasePassword, $this->databaseName);
+		$con=$this->mysqlConnection = new mysqli($this->hostname, $this->username, $this->databasePassword, $this->databaseName);
 		if ($this->mysqlConnection->connect_error) {
 			die('Connection failed: ' . $this->mysqlConnection->connect_error);
 		}
 	}
+
+
+
+
 
 }

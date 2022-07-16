@@ -37,12 +37,19 @@ if (isset($_SESSION['user_id'])) {
                     <!-- Checkbox Form -->
                     <form style="display: inline" action="change_status.php" method="post">
                         <input type="hidden" name="courseName" value="<?= $course->title ?>">
+                        <!-- <p class="text-sm text-gray-500"><?= $course->body ?></p> -->
+
                         <input type="checkbox" name="status" value="1" <?= $course->completed ? 'checked' : '' ?>>
                     </form>
                     <!-- Checkbox Form End  -->
                     <!-- Editable Course Title  -->
-                    <span class="courseTitle" data-originalcoursename="<?= $course->title  ?>" contentEditable="true">
-                        <?php echo $course->title   ?></span>
+                    <form style="display: inline" action="update.php" method="post">
+                        <span class="courseTitle" data-originalcoursename="<?= $course->title?>" contentEditable="true">
+                            <?php echo $course->title   ?>
+                            </span>
+                            <button>Edit</button>
+                    </form>
+
                     <!-- Editable Course Title End  -->
                     <!-- Delete Button Form  -->
                     <form style="display: inline" action="delete.php" method="post">
