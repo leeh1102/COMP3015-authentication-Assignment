@@ -17,6 +17,13 @@ if (isset($_SESSION['user_id'])) {
 }
 ?>
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Course Manager</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kimeiga/bahunya/dist/bahunya.min.css">
+</head>
 <body>
 
 <?php require_once 'nav.php' ?>
@@ -27,9 +34,26 @@ if (isset($_SESSION['user_id'])) {
 		<?php foreach ($courses as $course): ?>
             <li class="py-4 flex">
                 <div class="ml-3">
-                    <p class="text-sm font-medium text-gray-900"><?= $course->title ?></p>
+                    <!-- Checkbox Form -->
+                    <form style="display: inline" action="change_status.php" method="post">
+                        <input type="hidden" name="courseName" value="<?= $course->title ?>">
+                        <input type="checkbox" name="status" value="1" <?= $course->completed ? 'checked' : '' ?>>
+                    </form>
+                    <!-- Checkbox Form End  -->
+                    <!-- Editable Course Title  -->
+                    <span class="courseTitle" data-originalcoursename="<?= $course->title  ?>" contentEditable="true">
+                        <?php echo $course->title   ?></span>
+                    <!-- Editable Course Title End  -->
+                    <!-- Delete Button Form  -->
+                    <form style="display: inline" action="delete.php" method="post">
+                        <input type="hidden" name="courseName" value="<?= $course->title ?>">
+                        <button>Delete</button>
+                    </form>
+                    <!-- Delete Button Form End  -->
                 </div>
+                
             </li>
+            
 		<?php endforeach; ?>
 
     </ul>
