@@ -2,7 +2,7 @@
 ob_start();
 session_start();
 if (isset($_SESSION['user_id'])) {
-	header('Location: posts.php');
+	header('Location: course_manager.php');
 	exit;
 }
 ?>
@@ -166,7 +166,7 @@ function login(string $email, string $plaintextPassword) {
 	if ($correctPassword) {
 		$_SESSION['user_id'] = $user->id;
 		$_SESSION['welcome_message'] = "Welcome, $user->name!";
-		header('Location: posts.php');
+		header('Location: course_manager.php');
 	} else {
 		$_SESSION['error_message'] = $invalidLoginCredentialsMessage;
 		header('Location: login.php');

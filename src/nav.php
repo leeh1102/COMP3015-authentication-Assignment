@@ -30,11 +30,11 @@ $authenticatedUser = (new UserRepository())->getUserById($_SESSION['user_id']);
                 </div>
 
                 <div class="hidden md:ml-6 md:flex md:items-center md:space-x-4">
-                    <a href="posts.php" class=" text-white px-3 py-2 rounded-md text-sm font-medium">Posts</a>
+                    <a href="course_manager.php" class=" text-white px-3 py-2 rounded-md text-sm font-medium">Courses</a>
                 </div>
 
                 <div class="hidden md:ml-6 md:flex md:items-center md:space-x-4">
-                    <a href="new_post.php" class="text-white px-3 py-2 rounded-md text-sm font-medium">New Post</a>
+                    <a href="new_course.php" class="text-white px-3 py-2 rounded-md text-sm font-medium">New course</a>
                 </div>
 
             </div>

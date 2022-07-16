@@ -7,9 +7,9 @@ require_once 'Model.php';
 /**
  * @property int $id
  * @property string $title
- * @property string $body
+ * @property bool $completed
  * @property string $author_id
  */
-class Post extends Model {
+class Course extends Model {
 
 }
