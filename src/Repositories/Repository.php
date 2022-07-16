@@ -17,6 +17,7 @@ class Repository
 	private string $databaseName;
 	private string $databasePassword;
 
+
 	public function __construct()
 	{
 		// Note: in a real application we'd want to use environment variables to store credentials and any other environment specific data.
@@ -31,4 +32,5 @@ class Repository
 			die('Connection failed: ' . $this->mysqlConnection->connect_error);
 		}
 	}
+
 }

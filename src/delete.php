@@ -1,17 +1,27 @@
-
 <?php
+require_once 'Repositories/UserRepository.php';
+require_once 'Repositories/CourseRepository.php';
+require_once './Course_manager.php';
 
-$courseName = $_POST['courseName'];
-
-$courses = json_decode(file_get_contents('./courses.json'), true);
 
 
-foreach($courses->title as $idx => $course) {
-  if($course->title == $courseName) {
-    array_splice($courses->title, $idx, 1);
-  }
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+	$title = $_POST['title'];
+	$completed = $_POST['body'];
+	$userId = $_SESSION['user_id'];
+  echo "here";
+	$authenticatedUser = (new UserRepository())->getUserById($userId);
+  echo "here2";
+	$toBeDeletedCourse = (new CourseRepository())->deleteCourse($title, $completed, $authenticatedUser->id);
+  // $toBeDeletedCourse = (new CourseRepository())->deleteCourse($title, $completed, $userId);
+
+  $sql = "DELETE FROM customers WHERE id='".$_GET['id']."' ";
+    if (CourseRepository->$conn->query($sql) === TRUE) {
+       header("Location: index.php");
+    } else {
+        echo "Error deleting record: " . $conn->error;
+    }
+
+    $conn->close();
 }
-
-
-// file_put_contents('./courses.json', json_encode($courses, JSON_PRETTY_PRINT));
-header('Location: course_manager.php');
+?>
